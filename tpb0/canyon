@@ -1,0 +1,9 @@
+9   these steps):
+18        current directory as you run the command.
+21  Action 2: Email the contents of this file to your instructor as well as
+11  --------------------------------------------------------------------------
+14  
+15    $ submit unix tpb0 results tpb0steps
+8   which you can do the following two steps (NOTE that you must do BOTH of
+5   form of command-lines.  Please be sure to type them EXACTLY as written!
+24    $ cat results | mail -s "[UNIX] tpb0" wedge ${USER}@lab46.g7n.org

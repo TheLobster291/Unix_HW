@@ -1,0 +1,68 @@
+#Making variables
+refYear=0
+day=0
+leapYear=0
+
+#asking a question, printing to stderr
+echo "Enter a year between 2000 and 2099:" >&2
+
+#taking response as a variable
+read year
+
+#checking to be sure the response is within the designated range, if it isn't then exit
+if [ $year -lt 2000 -o $year -gt 2099 ]; then
+	
+	echo "Incorrect year assigned" >&2
+	
+	exit 1;
+fi
+
+#defining reference year by quartering it
+refYear=($year-2000)/4
+
+#defining day to get what day of the week it is
+let day="(($year-2000) + $refYear) % 7"
+
+#checking for leapyear
+if [ `expr $year % 4` -eq 0 ]; then
+
+	let day=day-1
+fi
+
+if [ $day -eq -1 ]; then
+	
+	let day=day+7
+fi
+
+#final prints
+if [ $day -eq 0 ]; then
+	printf "Sunday\n"  
+fi
+
+if [ $day -eq 1 ]; then
+	printf "Monday\n"  
+fi
+
+if [ $day -eq 2 ]; then
+	printf "Tuesday\n"  
+fi
+
+if [ $day -eq 3 ]; then
+	printf "Wednesday\n"  
+fi
+
+if [ $day -eq 4 ]; then
+	printf "Thursday\n"  
+fi
+
+if [ $day -eq 5 ]; then
+	printf "Friday\n"  
+fi
+
+if [ $day -eq 6 ]; then
+	printf "Saturday\n"  
+fi
+
+if [ $day -eq 7 ]; then
+	printf "Sunday\n"  
+fi

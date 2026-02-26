@@ -1,0 +1,27 @@
+1   --------------------------------------------------------------------------
+2   Congratulations! You have unravelled the puzzle box!
+3  
+4   To wrap up, you must perform these two additional steps, which take the
+5   form of command-lines.  Please be sure to type them EXACTLY as written!
+6  
+7   To proceed, you must have named this unscrambled file "results",  after
+8   which you can do the following two steps (NOTE that you must do BOTH of
+9   these steps):
+10  
+11  --------------------------------------------------------------------------
+12  Action 1: Submit your files using the "submit" tool. 
+13  --------  Just run the following to perform that action:
+14  
+15    $ submit unix tpb0 results tpb0steps
+16  
+17  NOTE: This assumes that your "results" and "tpb0steps" files are in the
+18        current directory as you run the command.
+19  
+20  --------------------------------------------------------------------------
+21  Action 2: Email the contents of this file to your instructor as well as
+22  --------  yourself. To do that,  run the following at the lab46 prompt:
+23  
+24    $ cat results | mail -s "[UNIX] tpb0" wedge ${USER}@lab46.g7n.org
+25  
+26  NOTE: If successful, you should receive a copy of this e-mail.
+27  --------------------------------------------------------------------------

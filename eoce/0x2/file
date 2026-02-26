@@ -1,0 +1,35 @@
+    czgk - ydnkgvt czgk viy zsdo
+    agdk - agdk ocz hznnvbz pkndyz-yjri
+   yzwpb - ydnkgvt yzwpbbdib diajmhvodji
+    wvxf - mzqzmnz ocz hznnvbz
+ jkodjin - yznxmdkodji
+ 
+           oj kzmajmh.
+           dn ijo ivhzy kmjkzmgt, do rdgg mviyjhgt xcjjnz ocz jkzmvodji
+           nxmdko rdgg jkzmvoz wvnzy ji ivhz (zixjyz/yzxjyz). Ia nxmdko
+ 
+           ocz nvhz ivhz vn vit ja ocz vmbphzion wzgjr.
+    ijoz - jwqdjpngt,  tjp xviijo cvqz  adgzn nkzxdadzy oj kmjxznn rdoc
+ 
+           $2-$N - adgzn oj kmjxznn (rdgg mzvy amjh 'STDIN' wt yzavpgo)
+           $1    - xdkczm jaanzo  (ncdao vgkcvwzo +/- amjh ijhdivg nzo)
+           $0    - hjyz ja jkzmvodji (zixjyz, yzxjyz); jm mviyjhgt kdxf
+ 0s2 - nzxmzo vbzio hznnvbzn (zixjyz/yzxjyz wvnzy ji xdkczm jaanzo)
+
+    help - display help and exit
+    flip - flip the message upside-down
+   debug - display debugging information
+    back - reverse the message
+ options - description
+ 
+           to perform.
+           is not named properly, it will randomly choose the operation
+           script will operate based on name (encode/decode). If script
+ 
+           the same name as any of the arguments below.
+    note - obviously,  you cannot have  files specified to process with
+ 
+           $2-$N - files to process (will read from 'STDIN' by default)
+           $1    - cipher offset  (shift alphabet +/- from nominal set)
+           $0    - mode of operation (encode, decode); or randomly pick
+ 0x2 - secret agent messages (encode/decode based on cipher offset)

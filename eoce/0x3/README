@@ -1,0 +1,212 @@
+unix fall2023 eoce 0x3
+========================
+Your task  here is  to implement a  bash script solution  of a  real life
+process:  the mental  math  trick of  determining what  day  of the  week
+January 1 of any given year (in the 21st century) falls on.
+
+You may  safely assume  that all requests  will be for  days in  the 21st
+century (2000-2099)
+
+Background
+==========
+Mental  Math  constitutes an  intersection  of  mental tricks  and  math-
+instead of  utilizing a purely math-only  solution, textual manipulations
+or simplifications in  the computational process may  take place enabling
+an individual to, once having learned the process, solve such problems in
+their head, and typically without the use of a calculating device.
+
+The process  in this case is  one of simple (reduced)  multiplication and
+mapping against a table. To wit:
+
+Day values
+==========
+For this trick to  work, we need to be familiar  with the following table
+(a map of days to numeric values):
+
++-----+-----+-----+-----+-----+-----+-----+-----+
+| Sun | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |
++-----+-----+-----+-----+-----+-----+-----+-----+
+
+NOTE: Depending  on how you implement  your algorithm, you may  find your
+approach prefers 7s OR 0s for your Sunday value... you aren't going to be
+encountering them  at random.  Once you work  through your  approach, you
+will discover which one you end up with.
+
+Calculating day of the week based on year
+=========================================
+Okay, time for the magic:
+
+Let us try it on January 1st, 2014.
+
+Step 1: Obtain last two digits of the year
+==========================================
+In  our  example, we're  working  with  2014,  the  last two  digits  are
+therefore: 14
+
+You should be able to come up with a means of extracting this information
+in your program.
+
+NOTE: You are to input the 4-digit year as input into your bash script.
+
+Step 2: Compute 25% (drop the decimal)
+======================================
+Even  this is  something we  can do  in  our heads.  I can  think of  two
+approaches right off the bat:
+
+Approach 1: 10 + 10 + 5
+=======================
+10% percent  of anything is merely  moving the decimal over  one place to
+the left. 10% of 54 is 5.4
+
+For our 2014 example, 10% of 14 is therefore 1.4
+
+So we need two 10 percents... 1.4 + 1.4 = 2.8
+
+Finally, 5% is half of 10% (half of 1.4 is 0.7), so 1.4 + 1.4 + 0.7 = 3.5
+
+But, since we do not care about the decimal at this end point, we drop it
+and are left with just 3.
+
+Approach 2: half of half
+========================
+25%  is a  convenient value  for us  with respect  to 100,  allowing this
+optimized approach to work.
+
+  * Half of 100 is 50 (50%)
+  * Half of 50 is 25 (25%) -- hence the "half of a half"
+
+So, 14 cut in half is 7.
+
+7 cut in half is 3.5.
+
+Once again, dropping the decimal yields 3.
+
+Step 3: Add 25% to year value
+=============================
+Once we  have our 25%  value, go  and add it  back to our  two-digit year
+value:
+
+    14 + 3 = 17
+
+Step 4: Subtract the largest fitting multiple of 7
+==================================================
+Why multiple of 7? Seven days in a week.
+
+Some multiples of 7:
+
++------+------+------+------+------+------+------+------+
+|   0  |   7  |  14  |  21  |  28  |  35  |  42  |  49  |
++------+------+------+------+------+------+------+------+
+
+So, with a value  of 17, what is the largest multiple of  7 that is still
+less than (or equal to) 17?
+
+Hopefully you identified the 14 as the likely candidate.
+
+    17 - 14 = 3
+
+Step 5: Look up day in table
+============================
+We ended up with a 3 as the result for January 1st, 2014.
+
+Go and  reference the 3 from  that table... what  day do we get?  Does it
+match the actual day of the week  for January 1st, 2014? We can verify it
+with the cal command:
+
+    $ cal 01 2014
+        January 2014
+    Su Mo Tu We Th Fr Sa
+              1  2  3  4
+     5  6  7  8  9 10 11
+    12 13 14 15 16 17 18
+    19 20 21 22 23 24 25
+    26 27 28 29 30 31
+
+    lab46:~$ 
+
+Pretty neat, eh?
+
+Exception: Leap Years
+=====================
+In the event of a leap year, we simply subtract 1 from the 25% value, and
+continue on as usual.
+
+Makes sense, right? Leap years add a day, so something ends up being "off
+by one".
+
+Script
+======
+It is your task to write a bash  script that will use the above method to
+determine the day of  the week any given January 1st  in the 21st century
+falls on.
+
+Your script should:
+  * prompt the user for the four digit year (input)
+  * perform the task (process)
+  * display the final value (output)
+
+Execution
+=========
+Here is a sample run of the script:
+
+    lab46:~/src/fall2023/unix/eoce/0x3$ ./0x3
+    Which year: 2014
+    January 1st, 2014 falls on: Wednesday
+    lab46:~/src/fall2023/unix/eoce/0x3$ 
+
+The execution of the script is short and simple- obtain the input, do the
+processing, produce the output, and then terminate.
+
+Output Specifications
+=====================
+Your program must output as follows:
+
+  * Input prompts, and everything else  except the actual day of the week
+    should be output to STDERR
+
+  * The calculated,  fully-spelled-out day of the week (and  only the day
+    name) needs to be displayed to STDOUT
+
+  * The output MUST contain the "January 1st, YEAR" string
+      * YEAR must be all 4 digits, exactly as input by the user
+
+  * The calculated day of the week must be fully spelled out and correct,
+    with the first letter capitalized, remaining letters lowercase.
+
+Verification
+============
+One of the tests  I will perform for output compliance  of your code will
+involve comparing your  script's output against a range  of input values,
+to see if they all output in conformance with project specifications.
+
+You can check your results by typing in the following at the prompt:
+
+    lab46:~/src/fall2023/unix/eoce/0x3$ ./verify
+
+If  all aligns,  you will  see a  lack of  error messages  output to  the
+screen. However,  if your output or  formatting is off by  even one byte,
+you will see a "MISMATCH".
+
+Additional requirements
+=======================
+In your  finished, submitted product, no  line in the script  should span
+longer  than 90  characters. This  includes  both script  logic and  your
+comments.
+
+  * script should be called "0x3"  and be located in  this 0x3/ directory
+    of the EoCE.
+
+  * if  there are any naming  manipulations needed on the  script, create
+    them as symbolic links against the "0x3" script.
+
+  * submit  with the rest  of the EoCE, by  running "make submit"  in the
+    base "eoce" directory.
+
+  * specific  output  to  STDOUT  vs STDERR  is  important,  as  is   the
+    formatting of output in regards to justification and spacing.
+
+The resultant  script MUST be well-organized,  easy-to-read, consistently
+indented  visually  showing the  encapsulated  levels  of logic,  and  be
+thoroughly commented to explain each significant step of the process.

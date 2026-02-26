@@ -1,0 +1,20 @@
+M<<Q
+R<<X
+X<<W
+Q<W
+W-W=A, A=0
+R<<M
+10-L=R
+W<L
+X<<H
+H<Q
+A<R, R=1
+A+carry-carry =9, 9-1= W=8
+Y<<W
+L=9
+Q=7
+H=6
+10-7=3=M
+L-Q=Y=2
+Y+Carry-W=4=E
+X=5

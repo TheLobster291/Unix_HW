@@ -1,0 +1,1 @@
+four | multby `five | modulus `three` | multby `five | modulus `four` | negate

@@ -1,0 +1,45 @@
+mv setup.exe setup.zip
+unzip setup.zip
+#lions in kenya file needs to have the right suffix to decompress, uses bz2
+mv lions_in_kenya.pka lions_in_kenya.bz2
+bzip2 -d lions_in_kenya.bz2
+#this pulled out a file called lions_in_kenya
+
+#dinosaurs with hats needs to be unzipped with tar.xz
+mv dinosaurs_with_hats.mp4 dinosaurs_with_hats.tar.xz
+tar -xf dinosaurs_with_hats.tar.xz
+#this pulled out a file called system32.dll
+
+#not_in_norway.wav should be gz 
+mv not_in_norway.wav not_in_norway.gz
+gunzip not_in_norway.gz
+#not_in_norway came out
+
+uudecode system32.dll
+#dinosaurs_with_hats.mp4 came out, no read permission
+chmod u+rw dinosaurs_with_hats.mp4
+
+#lions in kenya is an ar archive
+mv lions_in_kenya lions_in_kenya.a
+ar -x lions_in_kenya.a
+#snake.tic.base32 came out
+
+#not in norway is a cpio archive
+mv not_in_norway not_in_norway.cpio
+cpio -iv < not_in_norway.cpio
+#canyon.mid and 2 blocks came out
+uudecode canyon.mid
+
+#canyon.mid snake.tic.base32 and dinosaurs_with_hats.mp4 are all in ASCII txt
+ 
+base 32 -d snake.tic.base32 > snake.tic
+
+rev dinosaurs_with_hats.mp4 > dinosaurs_with_hats
+#sed is a stream editor for filtering and trasnforming text
+sed 's/Q/ /g' canyon.mid > canyon
+#s is seperate. Q is the character, then /, and then the character i want to 
+#replace Q with, in this case its a space. g is all
+cat snake.tic dinosaurs_with_hats canyon > solved
+
+#sort is a command to order things :)
+sort -n solved > results

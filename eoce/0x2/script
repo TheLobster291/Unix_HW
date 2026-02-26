@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+##############################################################################
+### 
+###	0x2 - secret agent messages (encode/decode based on cipher offset)
+###         $0    - mode of operation (encode, decode); or randomly pick
+###         $1    - cipher offset  (shift alphabet +/- from nominal set)
+###         $2-$N - files to process (will read from 'STDIN' by default)
+### 
+###   note - obviously,  you cannot have  files specified to process with
+###           the same name as any of the arguments below.
+### 
+###         script will operate based on name (encode/decode). If script
+###         is not named properly, it will randomly choose the operation
+###         to perform.
+### 
+###    options - description
+###    back - reverse the message
+###    debug - display debugging information
+###    flip - flip the message upside-down
+###    help - display help and exit
+### 
+
+#setting up variables
+
+#prints file in reverse
+BACK=$(echo "${*}" | egrep -qio '\<back\>' && echo -e '\x7C\x20\x72\x65\x76'); 
+
+#flips message upside down
+FLIP=$(echo "${*}" | egrep -qio '\<flip\>' && echo -e '\x7C\x20\x74\x61\x63');
+VALUE=21;
+
+#does both back and flip commands
+BKFL="${BACK} ${FLIP}"; 
+#displays help comments
+HELP=$(echo "${*}" | egrep -qio '\<help\>' && echo "true" || echo "false"); 
+
+#first argument, must be a number
+OFFSET="${1}"; 
+
+#shifts the argument into the next arguments
+shift 1; 
+
+#gives a degub mode ro display information
+DEBUG=$(echo "${*}" | egrep -qio '\<debug\>' && echo "true");
+
+#argument to grap the file specified 
+ARGV=$(echo  "${*}" | tr ' ' '\n' | egrep -v '\<(back|debug|flip|help)\>')
+
+LETTERS=; 
+
+#makes encode or decode mode
+MODE=$(basename "${0}");
+ 
+[ -z "${HELPmsg}" ] && PDIR="x" || PDIR="-"
+PICK=0; 
+tally=$((1+(12*8)));
+ 
+ #shifts each the ascii values to encode/decode letters to make a key
+	for ((value=0; value<$(((9*3)-1)); value++)); do
+		CHAR=$(echo "obase=16; ${tally}+${value}" | bc -q); 
+		CHAR=$(echo -e "\\x${CHAR}"); 
+		LETTERS="${LETTERS}${CHAR}"; 
+	done
+	
+#if help is asked, print it but flip it and encode or decode it, only 1st
+#21 lines are printed of this script file
+	if [ "${HELP}" = "true" ]; then 
+HELPmsg="ja" ${0} ${VALUE} <<< `cat ${0} | tac | grep '^### ' | tr -d '#'`
+exit 0
+	fi
+
+#makes a temporary file	to transform the letters with the key
+PSCRIPT=$(mktemp -p . ${MODE}.XXXX); 
+chmod 0700 ${PSCRIPT}
+FILENAME="${ARGV}"; 
+NUMcheck=$(echo "${OFFSET}" | grep '^-\?[0-9]\+$' | wc -l); 
+[ -z "${OFFSET}" ]  && echo "ERROR: MUST specify offset"     && exit 1
+[ "${NUMcheck}" -eq 0 ] && echo "ERROR: offset must be a number" && exit 2
+OFFSET=$(echo "${OFFSET}%26" | bc -q);
+ 
+function symbolsChange() { 
+	BACKIFY=; 
+	GRAB=; 
+	
+	CHANGE="${1}"; 
+	SYMBOLS="${2}"; 
+	symbolCheck=$(echo  "${CHANGE}" | grep -- '^-' | wc -l); 
+	CHANGE=$(echo "${CHANGE}" | tr -d '-'); 
+	
+	#if symbols, reverse
+	if [ "${symbolCheck}"  -eq 1 ]; then 
+		BACKIFY="| rev"; 
+	fi; 
+	#cut symbols from the change script
+	echo "echo \"${SYMBOLS}\" ${BACKIFY} | cut -c1-${CHANGE} ${BACKIFY}" >  ${PSCRIPT}
+	
+	#if nothing to change, dont worry about symbols, keep file as is
+	if [ "${CHANGE}" -eq 0 ]; then 
+		symbolCheck=2; 
+	fi 
+#if changes to be made, grab the temp script
+	if [ "${CHANGE}" -ne 0 ]; then
+		GRAB=$(${PSCRIPT}); 
+	fi
+#if changeable symbols, then grab them and replace them
+	if [ "${symbolCheck}"  -eq 0 ];  then 
+		SYMBOLS=$(echo "${SYMBOLS}${GRAB}" | cut -c$((${CHANGE}+1))-)
+	fi
+#if changeable no changeable symbols, grab them for symbols file 
+ 	if [ "${symbolCheck}"  -eq 1 ]; then 
+		SYMBOLS=$(echo "${GRAB}${SYMBOLS}" | cut -c1-26); 
+	fi
+#return symbols changed or unchanged depending
+	echo "${SYMBOLS}"; 
+}
+
+#if encode, leave as is
+if [ "${MODE}" = "$(echo -e '\x65\x6e\x63\x6f\x64\x65')" ]; then 
+	PDIR=; 
+fi
+
+#if decode, subtract
+if [ "${MODE}" = "$(echo -e '\x64\x65\x63\x6f\x64\x65')" ]; then 
+	PDIR="-"; 
+fi
+
+#if encode or decode not selected, randomly pick one
+[ "${PDIR}" = "$(echo -e '\x78')" ] && PICK=$(echo "${RANDOM}%2" | bc -q)
+[ "${PDIR}" = "$(echo -e '\x78')" ] && PDIR=
+	
+	if [ "${PICK}" -eq 1 ]; then 
+		PDIR="-"; 
+	fi
+
+#change according to the offset	
+OFFSET=$(echo "${PDIR}${OFFSET}" | sed 's/^--//g'); 
+SYMBOLS=$(symbolsChange ${OFFSET} ${LETTERS})
+
+#debug information mode
+	if [ ! -z "${DEBUG}" ]; then 
+		echo    "ARGV:    ${ARGV}"; 
+		echo    "BKFL:    ${BKFL}"; 
+		echo    "LETTERS: ${LETTERS}"; 
+		echo    "MODE:    ${MODE}"; 
+		echo    "OFFSET:  ${OFFSET}"; 
+		echo    "PDIR:    ${PDIR}"; 
+		echo    "PSCRIPT: ${PSCRIPT}"; 
+		echo    "SYMBOLS: ${SYMBOLS}"; 
+		echo -n "MESSAGE: "; 
+	fi
+
+#print output in temp script, return the message, delete the temp script	
+echo "cat ${FILENAME} | tr ${LETTERS} ${SYMBOLS} ${BKFL}"  >  ${PSCRIPT}
+MESSAGE=$(${PSCRIPT}); 
+echo "${MESSAGE}"; 
+/bin/rm -f ${PSCRIPT}; 
+exit 0

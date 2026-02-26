@@ -1,0 +1,15 @@
+wget https://lab46.g7n.org/~wedge/projects/pipemath/$(cat LATEST)
+
+#extracting pipemath file
+tar xf pipe*
+
+cp -r pipemath ~/bin
+#make pipemath
+cd pipemath
+makecd ..
+
+
+#pull out numbers
+tar xf numbers.tgz
+
+

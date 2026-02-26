@@ -1,0 +1,211 @@
+unix fall2023 eoce 0x1
+========================
+
+======Project: WEB PAGE ADVENTURE======
+
+=====Objective=====
+One of  the original draws  of the early World  Wide Web, which  for most
+people seems to have outpaced the general Internet in popularity, was the
+ability to host web pages.
+
+We will  be experiencing that very  task, through the manual  creation of
+our own web pages, as well as the necessary UNIX-related backdrop helping
+to ensure its operation.
+
+=====URL=====
+Web pages  are written  in HTML (HyperText  Markup Language),  a document
+format that web browsers can interpret and render content to the screen.
+
+They  are reached  via  URLs (Uniform  Resource  Locators), which  inform
+various tools of the how, where, and what to retrieve.
+
+  * how:  what   is  known  as   a  schema,  this  is   the  **http://**,
+    **https://**, and **ftp://** that far  too often is abstracted by the
+    web browser in the address bar. This  doesn't mean it is by any means
+    optional: the web browser still has to insert that information.
+
+  * where: host,  fully-qualified domain  name (FQDN), and  any resultant
+    path referencing the location of content on the server
+
+  * what:  the actual  file  we  wish to  retrieve.  Often  times, if  no
+    specific file is requested, the web server can be configured to serve
+    a default "**index.html**".
+
+In our  case, we'll be  using the  Lab46 Web Server  to host our  own web
+content. Piecing  together the above how,  where, and what, our  URL will
+resemble the following:
+
+  * https://lab46.g7n.org/~username/file.html
+
+Many of you have  likely already been interacting with your  web URL as a
+means of facilitating activities in other assignments.
+
+The   "**~username**",   and   specifically   the   tilde   (~),   is   a
+server-configured feature indicating your home directory's web directory,
+which is **public_html/**, any content  put under that directory and made
+world  readable (**public_html/**  itself  as well  as  your parent  home
+directory must  both have world search  (aka execute) in order  for it to
+work as well).  You may create subdirectories  under **public_html/** and
+store web content under them- the same permissions requirements apply.
+
+In some  web-server contexts, your **public_html/**  directory might also
+be referred to as a sort of "document root". So if you see paths starting
+with "/", that does NOT mean the  root of the filesystem, but the base of
+your **public_html/** directory.
+
+To reference any  subdirectories, merely append the  directory name after
+the "**~username/**" component of the URL.
+
+Basic rule of thumb for file permissions is as follows:
+
+  * web pages and image assets need to be world readable
+
+  * directories  (all   directories  from  the  home   directory  through
+    directory containing your content) need to be world searchable
+
+=====HTML=====
+
+As indicated above,  web documents intended for viewing in  a web browser
+are predominantly either written (or ultimately displayed as) HTML.
+
+HTML uses a set of predefined tags, very much like some of the wiki-based
+tags you may  have used while maintaining your  up-to-date weekly Journal
+entries.
+
+A google search for  HTML tags will turn up a  seemingly unending list of
+information on  HTML and the  available tags, that information  which you
+will be required to obtain to complete this project.
+
+The basic format of many tags is of one of the two formats:
+
+  * pair (open and close): **<p>This identifies a paragraph</p>**
+
+  * unary (standalone):    **<img src="images/image1.png" />**
+
+The forward  slash (stroke) is used  to identify the closing  tag, and is
+also present at the end of the unary tag.
+
+Common  mistakes are  misspelling  the  tag, or  forgetting  to close  an
+opening tag.
+
+=====Task=====
+Your task for this project will be to create a series of web pages in the
+form of a simple web-based adventure game.
+
+It will  consist of a minimum  of 11 pages (1  for start page, 1  for map
+page, 9  minimum for  world pages--  of course,  you can  **always** have
+more), each one consisting of a room that the viewer can navigate to.
+
+You get to come up with  the theme of your particular world/adventure. Is
+it medieval? Futuristic?  Based in the Thundercats  universe? Filled with
+furries?  Bronies?  Pick something  you  can  have  fun with  that  still
+conforms to the requirements.
+
+Requirements are as follows:
+
+  * base directory is: **~/public_html/0x1/**
+
+  * starting   page   in   your   base   directory   should   be   named:
+    **adventure.html**
+
+    * This page should have an introduction describing the nature of your
+      quest/adventure
+
+  * also in the base you  should have a **map.html** file which describes
+    the world you've created
+
+    * it should provide a "map" allowing a viewer to successfully make it
+      through to the goal and avoid any obstacles
+
+  * at least 9 additional pages making up your web-based adventure
+
+    * each page must  have a set of links to  adjoining rooms (methods of
+      connection up  to you: left,  right, up, down, north,  south, etc.)
+      and clicking on the link takes you to that adjoining page
+
+      * use relative paths  for all content references, so  your web site
+        can be easily relocated without any further alterations needed.
+
+    * there needs to be a logical connection of your rooms, so that there
+      can exist  a path or  paths to enable  the viewer to  navigate from
+      start to completion
+
+    * you need  to have  (at least)  3 obstacles  of some  sort (unending
+      abyss, space aliens abduct you, a hungry grue, or whatever fits the
+      overall theme  of your adventure).  These can constitute  dead ends
+      (and if  terminal dead  ends, should  only provide  a link  back to
+      "start over").
+
+    * each  page representing  a room  in your  world needs  to have  (at
+      minimum):
+
+      * links to adjoining rooms (even  if a terminal dead end- something
+        to let the user "start over")
+
+      * descriptions  of  what  the   viewer  encounters  in  each  room,
+        providing  a narrative  enticing  the user  to  continue on  this
+        adventure you've crafted for them
+
+      * each "room" page needs to be  in its own subdirectory beneath the
+        base directory,  and any associated  media files located  in that
+        same directory.  At the very  least, you  must have a  minimum of
+        3  subdirectories  upon which  your  adventure  is organized  and
+        correctly references content amongst
+
+  * you need to  have at least 4 images scattered  throughout your world.
+    These can  be in  the form  of a visual  aid, augmenting  any textual
+    description found on a given page
+
+  * You must make use of the following:
+
+    * text bolding
+    
+    * paragraphs
+    
+    * list
+    
+    * images
+    
+    * links
+    
+    * underline or italics
+    
+    * table
+
+    * font color or size change
+
+As this would be a great  opportunity to better familiarize yourself with
+**vi/vim**, I will emphasize the following:
+
+  * I want you to create these files locally on lab46, using **vim**.
+
+  * This activity is more a focus on your file manipulation skills in the
+    UNIX environment than a display of your web authoring skills.
+
+  * Not only  am I not expecting  anyone to have any  prior web authoring
+    experience, but I  am interested in seeing how  those with experience
+    "cope" with a lack of any preferred "shiny" authoring tools.
+
+    * Again, this  isn't an endeavor to  see how polished a  site you can
+      make, but instead  how you deal with the  remote and administrative
+      aspects of web design (which  frequently finds one interacting with
+      UNIX systems).
+
+=====Past Entries=====
+
+Here are some prior semester examples,  which you can use for inspiration
+(but please, no copying!):
+
+  * https://lab46.g7n.org/~wedge/wpa0/abarbcal/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/gsuber/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/hcordell/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/mfee1/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/nburns/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/pgrant3/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/rsanche1/adventure.html
+  * https://lab46.g7n.org/~wedge/wpa0/zswartwo/adventure.html
+
+====Deliverable====
+Please provide  in this  directory a  file containing  the URL  needed to
+reach your web page adventure, along  with an archive of what you've made
+(have it expand into a **0x1/** subdirectory).

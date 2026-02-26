@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+###
+### verify     - check for result correctness of unix/eoce/0x3,
+###              then report the missed years, along with overall score.
+###
+###       usage: verify [OPTION]...
+###
+###    behavior: this script is designed to be run when you are in the same
+###              (ie current working) directory as your '0x3' script.
+###
+###        NOTE: depending  on how the date/time is calculated,  output may
+###              break on 32-bit systems >= 2038. Run on a 64-bit system to
+###              verify the entire range.
+###
+###     options:
+###     =======
+###   onlymiss - only display missed values
+###       help - display this usage information and exit
+###
+##############################################################################
+
+##############################################################################
+##
+## Process options
+##
+ONLYMISS=$(echo "${*}" | grep -qio '\<onlymiss\>' && echo "true" || echo "false")
+DOHELP=$(echo   "${*}" | grep -qio '\<help\>'     && echo "true" || echo "false")
+
+##############################################################################
+##
+## Display usage information if requested
+##
+if [ "${DOHELP}" = "true" ]; then
+    cat ${0} | grep '^###' | grep -v '####' | sed 's/###//g'
+    exit 0
+fi
+
+##############################################################################
+##
+## Check for a '0x3' script in current directory
+##
+if [ ! -r "0x3" ]; then
+    echo "ERROR: no '0x3' script found in current directory"
+    exit 1
+fi
+
+##############################################################################
+##
+## Check that the '0x3' script in current directory is executable
+##
+if [ ! -x "0x3" ]; then
+    echo "ERROR: '0x3' script is not executable"
+    exit 2
+fi
+
+##############################################################################
+##
+## Declare some useful variables
+##
+THESCORE=0
+MISSLIST=
+MISSFLAG="no"
+
+##############################################################################
+##
+## Compare results, accumulate score and MISSLIST
+##
+for ((year=2000; year<=2099; year++)); do
+
+    ##########################################################################
+    ##
+    ## Determine the wanted day, and what day the program produces
+    ##
+    wantday=$(date -d "01/01/${year}" +%A)
+    haveday=$(./0x3 <<< ${year} 2>/dev/null)
+
+    ##########################################################################
+    ##
+    ## If a match, increment score and update 'msg' accordingly
+    ##
+    if [ "${wantday}" = "${haveday}" ]; then
+        let THESCORE=THESCORE+1
+        msg="OK"
+        OFFCOLOR=''
+        RESETOFF=''
+
+    ##########################################################################
+    ##
+    ## Otherwise, record the missed year, throw MISSFLAG, and update 'msg'
+    ##
+    else
+        MISSLIST="${MISSLIST} ${year}"
+        MISSFLAG="yes"
+        msg="MISMATCH"
+        OFFCOLOR='\033[0;31m'
+        RESETOFF='\033[0m'
+    fi
+
+    ##########################################################################
+    ##
+    ## Display things for the current value of the 'year' variable
+    ##
+    if [ "${ONLYMISS}" = "false" ] || [ "${msg}" = "MISMATCH" ]; then
+        printf "${OFFCOLOR} [${year}] "
+        printf "want: %9s, have: %9s ... ${msg}\n" "${wantday}" "${haveday}"
+        printf "${RESETOFF}"
+    fi
+done
+
+##############################################################################
+##
+## If anything was missed, display the years in question
+##
+if [ "${MISSFLAG}" = "yes" ]; then
+    echo "Invalid results found for the years: ${MISSLIST}"
+fi
+
+##############################################################################
+##
+## Finally, display the final score
+##
+echo "Score: ${THESCORE}/100"
+exit 0

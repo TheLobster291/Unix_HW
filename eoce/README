@@ -1,0 +1,191 @@
+======unix fall2023 eoce======
+The End of Course Experience (eoce) satisfies the fourth discrete grading
+component  of the  course. It  is meant  to evaluate  your knowledge  and
+understanding gained through the semester.
+
+Unlike the regular weekly projects, the  purpose of which is to promote a
+learning and  understanding of the concepts  of the course, this  EoCE is
+meant more  as a demonstration  of your proficiency in  understanding and
+utilizing the concepts and skills obtained, showing me how productive you
+can be with the experiences gained.
+
+=====Rules=====
+Presented within will be various activities evaluating your knowledge and
+experience gained this  semester. In places where you are  able, the more
+you write (ie comment) and explain  topics the better the chance you will
+have of  receiving full  credit (and alternatively,  the more  credit you
+will receive should something defer correctness).
+
+Unless otherwise  specified, the components  on this experience  are open
+resource with  the exception  of other individuals.  In that  respect, it
+is  **CLOSED  PERSON**.  This  means  you are  not  to  communicate  with
+other  people  (either in  the  class  or  otherwise),  in real  life  or
+electronically. Use your own knowledge, use your own skills, and use your
+own ability to access the allowed resources  to aid you in coming up with
+your well thought out responses to each activity.
+
+You are allowed,  and expected, to seek clarification on  any activity by
+asking me. But the  aim here is to evaluate what you  have learned, so do
+not  expect  tutoring.  Any  help  should be  prompted  by  a  well-asked
+question.  The better  and more  informed your  questions, the  better my
+responses MAY be. In many ways, I designed this EoCE premised on each and
+every  one of  you interacting  with me  through the  asking of  informed
+questions. Those  that do not  take advantage  of asking such  calibre of
+questions and  instead end up  struggling, please know that  you're doing
+this wrong. But also know that, the aim here is for you to accomplish the
+various tasks through your own understanding  of the task and concepts at
+hand, and not to outsource your thinking and remembering to others.
+
+You are to  do at least **N-1** of the  **N** available items. Submission
+is to be as  a submitted archive to the usual  and appropriate place (the
+'eoce' project  via 'make submit'  on lab46). Please amass  all pertinent
+files in the respective subdirectory so  you can submit everything in one
+fell swoop.
+
+To maximize  any credit received  (or to minimize points  lost), optimize
+your  submission  for  an  organized  and  easy-to-read  presentation  of
+information that conforms  with each section's stated  guidelines. In the
+case of programs or scripts written, ensure that you are following proper
+and  consistent commenting/documentation  and indentation  practices. Use
+well-named variables  (at least 4  symbols long),  and be mindful  of how
+your  particular  files  submitted  will  appear  on  a  reasonably-sized
+terminal (most of my terminals are 80-90 characters wide), should that be
+the contextually relevant destination of output.
+
+The  EoCE is  worth 26  points  of your  overall grade  (projects (52)  +
+participation (13)  + journal  (13) +  eoce (26)  = 104),  representing a
+distinct  fourth  category  within  the  grading  policy  of  the  course
+(Projects, Journal, Participation, and EoCE).
+
+====Finals Week Availability====
+While some  classes are allocated  a specific meeting time  during finals
+week,  I make  all  such times  available  should you  be  free and  have
+questions. As  such, finals week  in **CHM123** will look  something like
+this:
+
+  * Tuesday,   December 12th, 2023 from 08:00AM-05:30PM
+  * Wednesday, December 13th, 2023 from 02:30PM-05:30PM
+  * Thursday,  December 14th, 2023 from 11:15AM-02:15PM
+
+Do note,  the discord remains  available for  questions, and there  is no
+need for you to be physically present at a given time during finals week.
+These are  merely resources available to  you should you wish  to utilize
+them in the appropriate manners they are available to be used.
+
+=====Obtaining the EoCE files=====
+Using the 'grabit' tool  on lab46, you can obtain your  copy of the EoCE.
+As  a  first step,  change  into  a  location  suitable for  storing  and
+organizing your files within your repository:
+
+<cli>
+lab46:~$ cd ~/src/fall2023/unix
+lab46:~/src/fall2023/unix$ 
+</cli>
+
+... and run the grabit tool as pertinent for your class desig:
+
+<cli>
+lab46:~/src/fall2023/unix$ grabit unix eoce
+</cli>
+
+Please, do not change the name of the directory from eoce/.
+
+Change into that directory:
+
+<cli>
+lab46:~/src/fall2023/unix$ cd eoce
+lab46:~/src/fall2023/unix/eoce$ 
+</cli>
+
+Use "ls" to  list files, read any README files  (with cat/less/nano), and
+"cd" into the various subdirectories.
+
+Further information can  be found in various README  files located amidst
+the directories within the eoce; please be sure to read them.
+
+For some activities there may also  be some form of verification resource
+made  available to  you. Be  sure  to utilize  this to  help ensure  your
+implementation meets the requirements laid out in each section.
+
+You will notice  a directory tree, resembling the  following, within your
+extracted EoCE data:
+
+<code>
+       eoce/
+        |
+        +-- README
+        |
+        +-- Makefile
+        |
+        +-- 0x0/
+        |
+        +-- 0x1/
+        |
+        +-- 0x2/
+        |
+       ...
+</code>
+
+Within  each "0x"  subdirectory  you  will find  a  README  file and  any
+supporting files related to the particular activity you are tasked with.
+
+=====Errata=====
+Sometimes  typos  or  problems  are   discovered.  Should  there  be  any
+such  discoveries,  updates/corrections will  be  made  available in  the
+eoce/errata/ directory in the class public directory.
+
+=====Submission=====
+The DEADLINE FOR  SUBMISSION of this EoCE is  11:59:59pm (that's 23:59:59
+in  24-hour time)  Thursday, December  14th, 2023.  This is  the ultimate
+deadline for any and all coursework. There is no "late", only "too late".
+Don't be that person, not with this.
+
+I would highly  recommend not waiting until the last  moment (or even the
+last week) to start on this. It  has been released weeks in advance, with
+the intention that you  chip away at it a little bit at  a time, over the
+course of weeks.
+
+To submit, please  change into your base eoce directory  within your home
+directory:
+
+<cli>
+lab46:~$ cd ~/src/fall2023/unix/eoce
+lab46:~/src/fall2023/unix/eoce$ 
+</cli>
+
+... and run "make submit":
+
+<cli>
+lab46:~/src/fall2023/unix/eoce$ make submit
+</cli>
+
+As with the projects and other deliverables this semester, you can submit
+early (and worthwhile,  early submissions or extra work (ie  doing N of N
+available problems) can  receive up to 7 bonus points  (applicable to the
+EoCE grading  component)), and also submit  as many times as  you desire.
+Note that  when you submit, that  resets the timestamp from  which I will
+evaluate any early submission bonus points or on-time eligibility.
+
+Eligibility of any received bonus points on the EoCE are ultimately up to
+my decision: if you have genuinely put forth just and honest effort  that
+is worthy of this undertaking, you will likely receive any eligible bonus
+points as described. If you are more calculating and avoiding of  work in
+your EoCE efforts, I reserve the right not to grant any bonus points.
+
+Also, if I notice any cases of rule violations (people  overhelping  each
+other instead of letting each individual complete the EoCE on  their  own
+accord and ability), you risk forfeiting any/all bonus points or even any
+credit for the section(s) that you violated the rules on.
+
+Additionally:
+
+  * Solutions not abiding  by spirit of project will be  subject to a 50%
+    overall deduction
+  * Solutions  not  utilizing descriptive  why and  how comments  will be
+    subject to a 50% overall deduction
+  * Solutions not utilizing indentation to promote scope and clarity will
+    be subject to a 50% overall deduction
+  * Solutions not organized and easy to read are subject to a 50% overall
+    deduction
+
+Good luck!

@@ -1,0 +1,35 @@
+unix fall2023 eoce 0x2
+========================
+Here you will find a script, stripping of proper formatting and comments;
+it performs a task that you must  figure out and document (in the form of
+comments), as you also restore proper indentation.
+
+Note  that  the files  in  their  current  form,  while they  perform  an
+operation,  are not  in the  proper form  needed for  submission (namely,
+laying  out in  an  organized, easy-to-read,  consistently indented,  and
+well-commented fashion; that is something you may need to figure out).
+
+What is going  on here? Both on a global  (what functionality the script,
+when properly invoked, provides) and also more local (what are particular
+operations  within the  script doing  to  aid in  performing the  overall
+process).
+
+In your  finished, submitted product, no  line in the script  should span
+longer  than 90  characters. This  includes  both script  logic and  your
+comments.
+
+  * this script, when completed, should be called "0x2" and be located in
+    this 0x2/ directory of the eoce.
+
+  * with the  exception of "then" and "do" statements,  no other commands
+    can be separated by semi-colons
+
+  * if  there are any naming  manipulations needed on the  script, create
+    them as symbolic links against the "0x2" script.
+
+  * submit  with the rest  of the eoce, by  running "make submit"  in the
+    base "eoce" directory.
+
+The resultant  script MUST be well-organized,  easy-to-read, consistently
+indented  visually  showing the  encapsulated  levels  of logic,  and  be
+thoroughly commented to explain each significant step of the process.

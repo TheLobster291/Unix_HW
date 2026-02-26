@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<rom-definition version="1.0">
+    <rom type="cartridge" title="Hello world" version="1.0" />
+    <binary path="obj/HelloWorld.vbin" />
+    <textures>
+        <texture path="obj/Texture-HelloWorld.vtex" />
+    </textures>
+    <sounds>
+        <sound path="obj/Sound-HelloWorld.vsnd" />
+    </sounds>
+</rom-definition>

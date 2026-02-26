@@ -1,0 +1,19 @@
+
+cp data.tar.xz packet.tar.gz segment.tar.bz2 workload.zip 6.zip ~/src/fall2023/unix/dac0
+tar -xf data.tar.xz packet.tar.gz segment.tar.bz2
+unzip 6.zip
+unzip workload.zip
+uudecode out42
+rev 4 > 42
+uudecode out22
+tac 2 > 22
+uudecode out7
+rev out5 > 5
+tac out8 > 8
+stat -c %s 1 22 3 42 5 6 7 out8
+
+cat 1 > a
+ # I followed this pattern for the other files to give them a new name
+cp a b c d e f g h ~/src/fall2023/unix/dac0/result
+tar cvf result.tar result
+gzip result.tar

@@ -1,0 +1,102 @@
+pipemath - command-line pipeline math made easy (and fun!)
+==========================================================
+pipemath is  a collection of C  programs that performs an  indicated math
+operation,  taking input  primarily  from STDIN,  and  secondarily (if  a
+binary operator)  from a  command-line supplied  value. The  operation is
+performed on the input(s), with the result being displayed to STDOUT.
+
+It is so named because it is  a set of programs to perform various simple
+mathematical operations  on the  command-line, specifically for  use with
+pipes, which  transmute the STDOUT  output of  the process to  the pipe's
+left into STDIN for the process on the pipe's right.
+
+This also helps to give the user some experience in compiling, debbuging,
+troubleshooting, and  installing software  from source  so that  they can
+make use of it in their own endeavors.
+
+NOTE: 'pipemath'  is meant to be  used in conjunction with  the 'numbers'
+suite  of  tools.  Make  sure   you  have  properly  obtained,  read  the
+instructions, configured,  compiled, and  installed 'numbers'  before you
+proceed any further with 'pipemath'.
+
+How to compile
+==============
+Before you can  use pipemath, you first need to  compile the source code.
+This has been simplified with the use of a 'Makefile'. All you have to do
+(provided a  capable C compiler is  installed), is to type  'make' at the
+command-line and the  process should commence. You will see  each tool be
+compiled, and hopefully in a successful fashion.
+
+Troubleshooting
+===============
+Should something  end in failure, you  will need to investigate  what the
+problem may be. Most C compilers  do an excellent job identifying a point
+of issue, including  line and sometimes column information,  along with a
+description of what problem it thinks it has identified.
+
+Do  note, the  compiler isn't  always  perfect in  identifying the  exact
+problem,  which is  where human  interaction  is needed:  read the  error
+message, investigate the problem in the code; determine the resolution to
+the noted error.
+
+The 'Makefile'  has a parameter you  can provide, known as  "debug" which
+will  cause it  to  reveal  more information  about  the compile  process
+(namely, the file, and any compiler output corresponding).
+
+A good rule of  thumb: in the event of MANY errors,  only address the top
+one  at  any  given  time.  Sometimes addressing  the  first  error  will
+eliminate many of the succeeding errors.
+
+Once you  have made an  attempt at  resolving the error,  try compilation
+again, looking for signs of a successful compile.
+
+How to install
+==============
+In order  to make use  of pipemath for your  endeavors, you will  need to
+install  them  into  some  directory  in your  PATH.  Your  personal  bin
+directory, located  in the base of  your home directory (~/bin),  will do
+just fine.  To install pipemath into  your own bin directory,  run 'make'
+again (after successfully building them in the previous step) and provide
+it the 'install' parameter.
+
+Once  done you  should  be all  set.  Try  seeing if  the  tools are  now
+available to  you (try running  'plus' or any of  the other tools-  if it
+doesn't come  back saying "No such  file or directory", then  the install
+was likely successful).
+
+If not,  and you verify that  the tools were successfully  placed in your
+~/bin directory, you may want to try logging out and logging back in.
+
+Problems
+========
+Should  you encounter  problems  trying to  operate  the pipemath  tools,
+consider the following as you debug and troubleshoot the situation:
+
+  * are you providing input in the form of STDIN to the tool in question?
+
+  * are you sure?  If a pipe is  involved, is the output  going into that
+    pipe actually being sent to STDOUT?
+
+Unary vs binary inputs
+======================
+The  command-line and  its  pipeline  facility allows  for  a channel  of
+information to be  transacted between any two  processes. STDIN therefore
+is one established means of input for any pipemath tool. If this were the
+sole form of input for a tool, we'd consider this a unary input.
+
+On  the other  hand, we  can  also pass  information into  a process  via
+parameters, or  command-line arguments. Commands that  utilize input from
+the command-line  take in an additional  form of input, now  bringing the
+count of inputs of to 2. Hence: binary input.
+
+How to use
+==========
+The various  pipemath tools,  named for  the mathematical  operation they
+perform, are either  a binary or unary input tool.  For the binary input,
+the primary input comes from STDIN,  and the secondary input comes from a
+command-line supplied value.
+
+For the unary input tools, they only take input via STDIN.
+
+Once all required inputs have been provided, the indicated math operation
+is performed with the result being displayed to STDOUT.

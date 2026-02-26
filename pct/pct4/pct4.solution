@@ -1,0 +1,20 @@
+1.N<L
+2.W<<N
+3.W<N
+4.H<<Y
+5.Y<<Q
+6. W-W=H, H=0
+7.L<Y
+8. E<<C
+9.G<<W
+10.M<<C
+11.C-M=Y; C=Y+M; C-Y=M, Y<<C
+12.G<<E
+13.E<<M
+14. G=1 by process of elimination
+15. G<<M, 11-M=C
+M-2=W, by elimination W=4
+17.N=5,L=6,Y=7,E=3
+18.E+10-C=4, C=9
+19.Q=8
+20. Plug numbers in, 3481 is quotient, 12299 is reminder.

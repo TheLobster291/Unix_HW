@@ -1,0 +1,32 @@
+check=$(/usr/bin/who | grep 'jbernata' | wc -l | grep '^1$')
+if [ -z "${check}" ]; then
+
+wget https://lab46.g7n.org/~wedge/projects/pipemath/$(cat LATEST)
+
+#extracting pipemath file
+tar xf pipe*
+
+sudo cp -r pipemath ~/bin
+#make pipemath
+cd ~/bin/pipemath
+sudo make
+make install
+cd ..
+
+
+#pull out numbers
+tar xf numbers.tgz
+sudo cp -r numbers ~/bin
+cd ~/bin/numbers
+sudo make 
+make install
+cd ..
+
+cd ~/src/fall2023/unix/upf0
+fi
+
+count = 0
+while [ "${count}" -lt 8 ]; do
+echo "Task ${count} is equal to task${count}.cli"
+let count = count+1
+done

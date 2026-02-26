@@ -1,0 +1,27 @@
+G=1
+L<<X
+Q<<Y
+C<L
+X=A
+Y-1-L=T, L<<Y
+W-1or-2=W
+X-1-Q=T, or X-Q=T
+N<C
+N-H=Y
+H<<Q
+T<<Y
+T<<L
+X-Q=T
+T!=0
+E=0
+10-L=H
+Q-2=W
+L<<Q
+Q=7
+W=9
+Y=8
+T=2
+H=6
+L=5
+C=4
+N=3

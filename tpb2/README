@@ -1,0 +1,106 @@
+unix/tpb2
+=========
+Welcome to the next thrilling project in the puzzle box series! As it was
+before, a piece of data has  been contorted, divided, and obfuscated, and
+requires a  keen, observing eye to  suss out, unravel, and  piece it back
+together in a coherent, viable form.
+
+Some files in  the zip archive are password protected.  One such password
+can  be extracted  automatically from  this document  by grepping  it for
+'^PASSWORD:',  and  capturing only  the  content  AFTER  the colon  in  a
+variable (that  you can then use  with other commands in  your automation
+efforts).
+
+PASSWORD:l6DzDN
+
+Obtain the  password and figure out  how to extract what  data it unlocks
+from the archive and investigate it.
+
+Analyze  it;  this  data  is encoded  somehow.  Determine  the  potential
+patterns that may  govern it, and explore different ways  of decoding it.
+There may  be several  layers, manipulations, pieces,  etc. that  need to
+be obtained  and eventully  extracted/decoded/deciphered/arranged/etc. to
+build your final result.
+
+Be careful, exactness  can matter! Also: reading  and observation matter.
+When you assume things, and don't check to make sure your assumptions are
+in fact  reality, the puzzle box  can snag you, and  deter your progress.
+Manual pages remain very useful: knowing the default behaviour of a tool,
+along with  what options are  available can be  make or break  in getting
+through various hurdles encountered on your puzzle box journey.
+
+As you go  along, apply your senses of pattern  matching to unjumble what
+you have gotten. As always- avoid manual work: use tools on the system to
+help you. You  will be again making  a steps file that should  be able to
+automate the process, carrying out the non-interactive commands making up
+the steps of your solving process. This file shall be called "tpb2steps",
+and  you  submit it  at  the  conclusion of  your  work  on the  project,
+along  with  the  fully  unravelled  product (stored  in  a  file  called
+"tpb2.results").
+
+If you execute this script (your steps file), it should non-interactively
+carry out the  unravelling process (assuming the files  have been already
+copied into  the current directory),  and produce the end  result without
+any errors generated.
+
+Your  steps file  should NOT  incorporate copying  of the  data from  the
+public directory, nor  verifying end results, nor  submitting steps. JUST
+the  process of  solving the  puzzle  (that way  you don't  have to  make
+considerations for whether you are on your  pi or lab46: once you get the
+tpb2 project files in place, your steps file can get to work).
+
+In addition to  all the tools we've explored this  semester, you may want
+to specifically investigate the following:
+
+  * file(1)
+  * xxd(1)
+  * cut(1)
+  * lzma(1)
+  * ls(1)
+  * rev(1)
+  * ar(1)
+  * xz(1)
+  * grep(1)
+  * tar(1)
+  * sha384sum(1)
+  * gzip(1)
+  * head(1)
+  * uudecode(1)
+  * unzip(1)
+  * tac(1)
+  * tr(1)
+  * base64(1)
+  * bzip2(1)
+
+Also,  viewing  and reading  through  any  script  logic or  source  code
+provided will likely prove invaluable. Always  the aim is to have an idea
+of what is going on.
+
+EXAMPLE
+=======
+Included with  your files is an  EXAMPLE file, showcasing an  instance of
+the format of  your own end result.  You may want to study  this file, so
+you can recognize patterns of data.
+
+You should also explore various encoding/decoding processes; encoding and
+studying the EXAMPLE file, seeing what the encoded data looks like, along
+with then decoding it to verify you can accomplish the decoding processes
+to have a familiarity with the tools will be quite helpful.
+
+VERIFICATION
+============
+In the base of the tpb2 project directory (in the unix public directory),
+you will  find a MANIFEST file.  This contains the 'sha384sum'  hashes of
+the correctly  unscrambled pieces and  resultant file you are  in pursuit
+of. You can generate  a sum and grep for a match in  the MANIFEST file to
+help ensure whether or not you have got that part.
+
+SUBMISSION
+==========
+The  unraveled  product (something  visual,  coherent,  and perhaps  some
+degree of BEST  CLASS YOU'VE EVER TAKEN greatness) should  be placed in a
+file called "tpb2.results",  which, along with "tpb2steps",  are what you
+need to submit upon project completion:
+
+  lab46:~/src/SEMESTER/unix/tpb2$ submit unix tpb2 tpb2.results tpb2steps
+

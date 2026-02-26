@@ -1,0 +1,32 @@
+The password that you seek is can be obtained from this file in a similar
+fashion as  how you obtained  the first (from  README): non-interactively
+and into a variable for later use.
+
+PASSWORD:1s7x5JhoSZGJY
+
+With visually-aligned data, there are various strategies for performing a
+variety of manipulations to make it appear anything but.  Do not let this
+deter you, and consider the following:
+
+  * replacing spaces with a non-printable character can appear to have  a
+    horizontally-deflating appearance on the data.  A character  is still
+    there, as a placeholder. If spaces have been replaced, they have been
+    replaced with a '\1' character.
+
+  * replacing newlines with a non-printable character can appear to  pull
+    the image longer horizontally (although less coherently,  as it joins
+    all possible lines onto one long run-on line).  A character is  still
+    there, as a placeholder.  If newlines have  been replaced,  they have
+    been replaced with a '\2' character.
+
+  * it might be that no contorting of original data has taken place.
+
+  * of course, there could also be scenarios where BOTH contortions  have
+    taken place.
+
+Be mindful of this as you unravel the puzzle.
+
+The key is  to be aware of  your data, what patterns or  symbols might be
+present, and  what your data is  not. This is the  critical human element
+that is added into the mix: that mystery state that so many problems find
+themselves in.

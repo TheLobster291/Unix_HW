@@ -1,0 +1,42 @@
+#steps for tpb1
+mv tpb1.sh tpb1.gz
+gunzip tpb1.gz
+# becomes tpb1, is an ar archive
+mv tpb1 tpb1.a
+ar x tpb1.a
+#a file called datafile was extracted. I cat-ed it and it looks terrible
+
+#halfway point is row 14
+
+#top half halfway point is collumn 30, bottom half is collumn 29
+
+#Current top right will be quad1, top left quad 2, bottom left quad 3,
+#and  bottom right quad 4
+
+#cut in half
+head -n 14 datafile > Quadrants12
+tail -n 14 datafile > Quadrants34
+
+#cut halves in half
+
+cut -c 1-28 Quadrants34 > Quad3
+cut -c 30-58 Quadrants34 > Quad4
+cut -c 1-29 Quadrants34 > Quad1
+cut -c 31-58 Quadrants34 > Quad2
+
+#flip text vertically
+tac Quad1 > Quad1.2 
+tac Quad2 > Quad2.2 
+tac Quad3 > Quad3.2 
+tac Quad4 > Quad4.2
+
+#reverse lines
+rev Quad3.2 > Quad3.3
+rev Quad4.2 > Quad4.3
+ 
+#Now put the pieces together
+paste -d "  " Quad2.2 Quad1.2 > Quads21
+paste -d "  " Quad4.3 Quad3.3 > Quads43
+
+#put top and bottom together
+cat Quads 21 Quads43 > tb1.results

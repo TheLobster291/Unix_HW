@@ -1,0 +1,33 @@
+unix fall2023 eoce 0x5
+========================
+======Project: Make A Clock======
+
+=====Objective=====
+Read the  current time (in the  form of seconds since  the epoch- January
+1st, 1970 at midnight), and display the time in the form of a hexadecimal
+clock, updating every second.
+
+=====Task=====
+Write a  script that reads  the time, in the  form of the  current second
+offset  since the  "start of  time", performing  the needed  mathematical
+calculations on  that value, and display  the resulting date and  time to
+the screen.
+
+Aside from  obtaining the current  number of  seconds since the  start of
+time,  you are  to ascertain  the various  aspects of  the date  and time
+mathematically.
+
+The displayed value should update each second.
+
+Be sure  to provide, either as  a comment block  in the script, or  as an
+obvious accompanying file,  a summary of what you did,  how to operate it
+(assuming  these aren't  in  the form  of  on-screen instructions  during
+operation ),  what isn't working,  what from these  specifications hasn't
+been achieved.
+
+Your end result will be assessed based on implementation and  correctness
+of functionality, along with clear, ease of use operation of the program.
+
+The usual attributes of staying within the spirit of the project, a clean
+error-free operation,  good indentation,  descriptive comments,  etc. all
+still apply.

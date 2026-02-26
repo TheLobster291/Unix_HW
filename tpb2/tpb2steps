@@ -1,0 +1,49 @@
+#tpb2 steps
+mv superpb?* superpb2.zip
+unzip superpb2.zip
+#mushroom and README came out. More files are inside but require passwords
+#mushroom and README are ascii text files
+#there was a password for enigmatic.file, gave me enigmatic.file, convert.c
+#nibbleflip.c, and badger
+
+#badger is a gzcompressed datafile
+mv badger badger.gz
+gunzip bad?*
+#badger came out as UTF-8 unicode text
+# enigmatic.file is encoded text
+uudecode enig?*
+#when performed again it says i should perform freopen on stage 2
+gcc -Wall --std=gnu18 nibbleflip.c -o nibbleflip
+gcc -Wall --std=gnu18 convert.c -o convert
+chmod u+rwx stage2
+
+cat stage2 | ./convert > stage2eng
+#password 1s7x5JhoSZGJY
+# itsa and snake came out
+rev badger > megaheadhead
+
+mv snake snake.xz
+unxz snake.xz
+#snake came out
+mv snake hello
+uudecode hello
+#snake came out
+rev snake | tr '\1' ' ' > megafeet
+#made megaman's feet
+
+mv itsa itsa.bz2
+bzip2 -d itsa.bz2
+mv itsa itsa.bz2
+bzip2 -d itsa.bz2
+
+cat itsa | ./convert | tr '\1' ' ' | tr '\2' ' ' > itsa2
+tac itsa2 > megahead 
+#an image of megaman's head was made
+
+base64 -d mushroom > megabody
+#all megaman body pieces are made
+
+#now we can put them... in one piece :)
+cat megaheadhead megahead megabody megafeet > tpb2.results
+
+
